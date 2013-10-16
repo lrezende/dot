@@ -1,4 +1,12 @@
-dot
-===
+# Dot files
 
-Dot files at one place
+## Installation
+
+    cd ~
+    mkdir dot
+    cd dot
+    git clone git@github.com:lrezende/dot.git
+
+    cd ~
+    ln -s dot/vimrc .vimrc
+    ln -s dot/gvimrc .gvimrc
