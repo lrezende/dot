@@ -7,3 +7,9 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "dircolors"]
+	path = dircolors
+	url = https://github.com/lrezende/dircolors-solarized.git
+[submodule "gnome-terminal-colors-solarized"]
+	path = gnome-terminal-colors-solarized
+	url = https://github.com/lrezende/gnome-terminal-colors-solarized.git
