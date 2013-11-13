@@ -1,21 +1,45 @@
+"https://github.com/mbrochh/vim-as-a-python-ide
 "https://github.com/seebi/vimrc/blob/master/vimrc
+"https://github.com/avelino/.vimrc.git
+"https://github.com/davidhalter/jedi-vim
 
 execute pathogen#infect()
 syntax on
+filetype on
 filetype plugin indent on
 
-let g:user_emmet_mode='a'    "enable all function in all mode.
+" BASIC SETUP
+"
+" Unleash all VIM power
+set nocompatible
 
+" Better copy & paste
+" When you want to paste large blocks of code into vim, press F2 before you
+" paste. At the bottom you should see ``-- INSERT (paste) --``.
+set pastetoggle=<F2>
+
+" color setup
 set t_Co=256
-syntax enable
-set background=dark
 colorscheme solarized
+set background=dark
 
+" Showing line numbers and length
+set number  " show line numbers
+set tw=99   " width of document (used by gd)
+set nowrap  " don't automatically wrap on load
+set fo-=t   " don't automatically wrap text when typing
+
+" remap leader key
 let mapleader = ","
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" Better modes.  Remeber where we are, support yankring
+set viminfo=!,'100,\"100,:20,<50,s10,h,n~/.viminfo
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
 " http://vimcasts.org/episodes/tabs-and-spaces/
 " 4 spaces expanded and backspace deletes 4 spaces too
@@ -27,46 +51,32 @@ set expandtab
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" do not keep a backup file
-set nobackup
+" change swap and backup directory
+" mkdir ~/tmp
+set backupdir=~/tmp
+set directory=~/tmp
 
 set scrolloff=5    " Minimal number of screen lines to keep above and below the cursor
 
 set showmode
 set showcmd         " display incomplete commands
-set incsearch       " do incremental searching
-set hlsearch        " switch on highlighting the last used search pattern.
 
 " command-line completion menu
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
-set visualbell      " no beep but visual bell
-nmap <leader>q :q<CR>
-nmap <leader>Q :qa<CR>
+set foldmethod=indent
+set foldlevel=99
 
-" faster saving
-nnoremap <leader>w :w<CR>set visualbell      " no beep but visual bell
+" no beep but visual bell
+set visualbell
 set cursorline      " Highlight the screen line of the cursor
-set cursorcolumn      " Highlight the screen column of the cursor
-set ttyfast         " Indicates a fast terminal connection.
+set cursorcolumn    " Highlight the screen column of the cursor
 set ruler           " Show the line and column number of the cursor position
 set laststatus=2    " = always
 
-" case-sensitive search intelligently
-set ignorecase
-set smartcase       " all lower -> insensitive, on upper case -> sensitive
-
-" handle long lines
-set wrap
-set textwidth=79
-set formatoptions=qrn1
-
-" Switch syntax highlighting on
-syntax on
-
 "{{{ Toggle dark/light background for solarized
-nmap <leader>tb :call ToggleSolarized()<CR>
 function! ToggleSolarized()
     if &background == "dark"
         set background=light
@@ -79,21 +89,45 @@ endfunc
 "}}}
 
 " vimrc_on_the_fly from vimcasts
-autocmd bufwritepost .vimrc source $MYVIMRC
-" edit vimrc on the fly
-nmap <leader>rc :tabedit $MYVIMRC<CR>
+" autocmd bufwritepost .vimrc source $MYVIMRC
 
-" remap tab switch commands
+
+" CTRL KEY MAPPINGS
+" Bind nohl
+" Removes highlight of your last search
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
+
+" LEADER KEY MAPPINGS
+map <leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+" tab commands
 nmap <leader>n :tabnext<CR>
 nmap <leader>m :tabprevious<CR>
 nmap <leader><Return> :tabnew<CR>
-
-" faster exit
+" fast quit
 nmap <leader>q :q<CR>
 nmap <leader>Q :qa<CR>
-
-" faster saving
+" fast save
 nnoremap <leader>w :w<CR>
+" fast edit vimrc file
+nmap <leader>rc :tabedit $MYVIMRC<CR>
 
-set foldmethod=indent
-set foldlevel=99
+" FUNCTIONS KEYS MAPPINGS
+"<F2> = pastetoggle
+noremap <F3> :NERDTreeToggle<CR>
+noremap <F4> :call ToggleSolarized()<CR>
+noremap <F5> :ZoomWin<CR>
+noremap <F8> :TagbarToggle<CR>
+
+" Jedi Options
+autocmd FileType python setlocal completeopt-=preview
+let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+
+" NerdTreeTabs
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeWinSize = 40
+
