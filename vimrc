@@ -101,6 +101,7 @@ inoremap <C-n> :nohl<CR>
 
 " LEADER KEY MAPPINGS
 map <leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+nnoremap <leader>c ggO# -*- coding: utf-8 -*-<ESC>
 " tab commands
 nmap <leader>n :tabnext<CR>
 nmap <leader>m :tabprevious<CR>
