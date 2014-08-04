@@ -20,7 +20,7 @@ set pastetoggle=<F2>
 
 " color setup
 set t_Co=256
-colorscheme solarized
+colorscheme desert
 set background=dark
 
 " Showing line numbers and length
@@ -72,18 +72,20 @@ set foldlevel=99
 " no beep but visual bell
 set visualbell
 set cursorline      " Highlight the screen line of the cursor
-set cursorcolumn    " Highlight the screen column of the cursor
+set nocursorcolumn    " Highlight the screen column of the cursor
 set ruler           " Show the line and column number of the cursor position
 set laststatus=2    " = always
+
+set encoding=utf-8
 
 "{{{ Toggle dark/light background for solarized
 function! ToggleSolarized()
     if &background == "dark"
         set background=light
-        colorscheme solarized
+        colorscheme desert
     else
         set background=dark
-        colorscheme solarized
+        colorscheme desert
     endif
 endfunc
 "}}}
