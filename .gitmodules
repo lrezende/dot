@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-jinja2-syntax"]
 	path = vim/bundle/vim-jinja2-syntax
 	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+[submodule "vim/bundle/sparkup"]
+	path = vim/bundle/sparkup
+	url = https://github.com/rstacruz/sparkup.git
