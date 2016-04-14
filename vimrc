@@ -95,6 +95,11 @@ filetype on
 filetype plugin on
 filetype indent on
 
+" color setup
+set t_Co=256
+colorscheme desert
+set background=dark
+
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
@@ -127,6 +132,7 @@ set backspace=indent,eol,start
 set showcmd
 set shell=/bin/sh
 
+<<<<<<< HEAD
 "*****************************************************************************
 "" Visual Settigns
 "*****************************************************************************
@@ -214,6 +220,75 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 20
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
+=======
+" change swap and backup directory
+" mkdir ~/tmp
+set backupdir=~/tmp
+set directory=~/tmp
+
+set scrolloff=5    " Minimal number of screen lines to keep above and below the cursor
+
+set showmode
+set showcmd         " display incomplete commands
+
+" command-line completion menu
+set wildmenu
+set wildmode=list:longest,full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+
+set foldmethod=indent
+set foldlevel=99
+
+" no beep but visual bell
+set visualbell
+set cursorline      " Highlight the screen line of the cursor
+set nocursorcolumn    " Highlight the screen column of the cursor
+set ruler           " Show the line and column number of the cursor position
+set laststatus=2    " = always
+
+set encoding=utf-8
+
+"{{{ Toggle dark/light background for solarized
+function! ToggleSolarized()
+    if &background == "dark"
+        set background=light
+        colorscheme desert
+    else
+        set background=dark
+        colorscheme desert
+    endif
+endfunc
+"}}}
+
+" vimrc_on_the_fly from vimcasts
+" autocmd bufwritepost .vimrc source $MYVIMRC
+
+
+" CTRL KEY MAPPINGS
+" Bind nohl
+" Removes highlight of your last search
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
+
+" LEADER KEY MAPPINGS
+map <leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+nnoremap <leader>c ggO# -*- coding: utf-8 -*-<ESC>
+" tab commands
+nmap <leader>n :tabnext<CR>
+nmap <leader>m :tabprevious<CR>
+nmap <leader><Return> :tabnew<CR>
+" fast quit
+nmap <leader>q :q<CR>
+nmap <leader>Q :qa<CR>
+" fast save
+nnoremap <leader>w :w<CR>
+" fast edit vimrc file
+nmap <leader>rc :tabedit $MYVIMRC<CR>
+
+" FUNCTIONS KEYS MAPPINGS
+"<F2> = pastetoggle
+>>>>>>> 85d706a12b483701dac7894a0ad5a3e12a56fead
 noremap <F3> :NERDTreeToggle<CR>
 
 " grep.vim
