@@ -94,6 +94,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias tmdev='tmux -f ~/.tmux.dev.conf'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -125,7 +126,10 @@ fi
 
 export PROJECT_HOME=~/desenv/projetos
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 export PGUSER=postgres
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-twilight.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+export PATH=~/bin:${PATH}
