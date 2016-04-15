@@ -34,6 +34,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'easymotion/vim-easymotion'
 " NeoBundle 'jistr/vim-nerdtree-tabs.git'
 " NeoBundle 'tpope/vim-commentary'
 " NeoBundle 'tpope/vim-fugitive'
@@ -154,6 +155,7 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
+set relativenumber
 
 let no_buffers_menu=1
 if !exists('g:not_finsh_neobundle')
